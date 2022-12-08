@@ -33,4 +33,5 @@ for row in data_file:
             my_points += (6 + value_dict_me["Z"])
         elif opponent_value == "C":
             my_points += (6 + value_dict_me["X"])
+
 print(my_points)

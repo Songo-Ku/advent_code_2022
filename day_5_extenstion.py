@@ -2,12 +2,11 @@ import os
 import re
 
 
-path = os.getcwd() + '/files/dataset_1.txt'
 
 
 # this function is easy to custom other solution with changing rows and columns
+# it return_ list for each column
 def get_start_pack_data(path):
-
     # prepare list of 8 from main task of day part 1
     list_ = [[] for i in range(9)]
     # I used here better clause "with" in python which automatically close file after skip indent clause.
@@ -34,7 +33,39 @@ def get_start_pack_data(path):
                 if value_ != '    ':
                     cleaned_ele = re.findall(r'\[(.*)\]', value_)
                     list_[ele].append(''.join(cleaned_ele))
+    return list_
 
 
+def is_integer(n):
+    try:
+        float(n)
+    except ValueError:
+        return False
+    else:
+        return float(n).is_integer()
 
+
+def mix_instructions_p1(dict_, list_):
+    # reverse with use copy in 2 lines
+    copy_list = list_[int(dict_["from"])-1][-int(dict_["move"]):]
+    copy_list.reverse()
+    # it was possible to use list_[::-1] then we had reversed list in one line
+    list_[int(dict_["to"])-1] = list_[int(dict_["to"])-1] + copy_list
+    list_[int(dict_["from"])-1] = list_[int(dict_["from"])-1][:-int(dict_["move"])]
+    return list_
+
+
+def mix_instructions_p2(dict_, list_):
+    print('lista dla wybranego from ', list_[int(dict_["from"])-1])
+    # print(' co chcemy przeniesc ', list_[int(dict_["from"])-1][-int(dict_["move"]):])
+    copy_list = list_[int(dict_["from"])-1][-int(dict_["move"]):][::-1]
+    # it was possible to use list_[::-1] then we had reversed list in one line
+    print(copy_list)
+    print('gdzie chcemy przeniesc ', list_[int(dict_["to"])-1])
+
+    list_[int(dict_["to"])-1] = list_[int(dict_["to"])-1] + copy_list
+    # print(' po przeniesieniu do listy docelowej', list_[int(dict_["to"])-1])
+    list_[int(dict_["from"])-1] = list_[int(dict_["from"])-1][:-int(dict_["move"])]
+    print(' glowna lista po zmianie\n', list_)
+    return list_
 

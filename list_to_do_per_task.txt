@@ -1,0 +1,6 @@
+# sprawdz czy 4 pierwsze nie sa markerem
+# potem licz od 4 elementu petle przetrzymujac ostatnie 4 elementy w osobnej zmiennej i sprawdzaj
+# czy usuniecie poprzedniego elementu i dodanie kolejnego do 4 jest zbiorem 4 elementów.
+# Jeśli jest to wlasnie to jest market poszukiwany
+# jesli ostatni element jest 10 to trzeba uwazac na indeksowanie.
+# jesli indeksujemy od 0 to znaczy ze 10 element nie bedzie 10, a 11.

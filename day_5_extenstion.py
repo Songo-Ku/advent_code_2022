@@ -56,16 +56,7 @@ def mix_instructions_p1(dict_, list_):
 
 
 def mix_instructions_p2(dict_, list_):
-    print('lista dla wybranego from ', list_[int(dict_["from"])-1])
-    # print(' co chcemy przeniesc ', list_[int(dict_["from"])-1][-int(dict_["move"]):])
-    copy_list = list_[int(dict_["from"])-1][-int(dict_["move"]):][::-1]
-    # it was possible to use list_[::-1] then we had reversed list in one line
-    print(copy_list)
-    print('gdzie chcemy przeniesc ', list_[int(dict_["to"])-1])
-
-    list_[int(dict_["to"])-1] = list_[int(dict_["to"])-1] + copy_list
-    # print(' po przeniesieniu do listy docelowej', list_[int(dict_["to"])-1])
+    list_[int(dict_["to"])-1] = list_[int(dict_["to"])-1] + list_[int(dict_["from"])-1][-int(dict_["move"]):]
     list_[int(dict_["from"])-1] = list_[int(dict_["from"])-1][:-int(dict_["move"])]
-    print(' glowna lista po zmianie\n', list_)
     return list_
 
